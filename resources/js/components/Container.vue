@@ -60,7 +60,7 @@ export default {
         return {
             editItem: null,
             showForm: false,
-            nav: 'links',
+            nav: 'pdfs',
         }
     },
 
