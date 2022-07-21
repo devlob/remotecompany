@@ -1,3 +1,6 @@
 <x-layout>
-    <container :items="{{ $links }}"></container>
+    <container
+            :pdfs="{{ $pdfs }}"
+            :snippets="{{ $snippets }}"
+            :links="{{ $links }}"></container>
 </x-layout>
