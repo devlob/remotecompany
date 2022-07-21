@@ -3,18 +3,14 @@
 namespace App\Http\Controllers\Links;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Links\CreateLinkRequest;
 use App\Models\Link;
-use Illuminate\Http\Request;
 
 class CreateLinkController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(CreateLinkRequest $request)
     {
-        $link = Link::create([
-            'title' => $request->title,
-            'link' => $request->link,
-            'open_in_new_tab' => $request->open_in_new_tab,
-        ]);
+        $link = Link::create($request->validated());
 
         return response()->json([
             'data' => $link

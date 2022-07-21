@@ -19,6 +19,7 @@
                             <input type="text"
                                    class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                                    required
+                                   id="title"
                                    v-model="form.title">
                         </div>
                     </div>
@@ -32,6 +33,7 @@
                             <input type="url"
                                    class="max-w-lg block w-full shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md"
                                    required
+                                   id="link"
                                    v-model="form.link">
                         </div>
                     </div>
@@ -46,6 +48,7 @@
                                 <label class="flex items-center h-5">
                                     <input type="checkbox"
                                            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
+                                           id="open_in_new_tab"
                                            v-model="form.open_in_new_tab">
 
                                     <span class="ml-3 font-medium text-gray-700 select-none">
@@ -99,10 +102,26 @@ export default {
         submit() {
             if (this.editItem) {
                 axios.put(`/api/links/${this.editItem.id}`, this.form)
-                    .then(() => this.resetForm())
+                    .then(() => {
+                      this.$resetValidation(Object.keys(this.form))
+
+                      this.resetForm()
+                    })
+                    .catch(error => {
+                      this.$applyValidation(error.response.data.errors, Object.keys(this.form))
+                      this.$resetValidation(Object.keys(this.form))
+                    })
             } else {
                 axios.post('/api/links', this.form)
-                    .then(() => this.resetForm())
+                    .then(() => {
+                      this.$resetValidation(Object.keys(this.form))
+
+                      this.resetForm()
+                    })
+                    .catch(error => {
+                      this.$applyValidation(error.response.data.errors, Object.keys(this.form))
+                      this.$resetValidation(Object.keys(this.form))
+                    })
             }
         },
 

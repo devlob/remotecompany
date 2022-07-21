@@ -3,18 +3,14 @@
 namespace App\Http\Controllers\Links;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Links\EditLinkRequest;
 use App\Models\Link;
-use Illuminate\Http\Request;
 
 class EditLinkController extends Controller
 {
-    public function __invoke(Link $link, Request $request)
+    public function __invoke(EditLinkRequest $request, Link $link)
     {
-        $link->update([
-            'title' => $request->title,
-            'link' => $request->link,
-            'open_in_new_tab' => $request->open_in_new_tab,
-        ]);
+        $link->update($request->validated());
 
         return response()->json([
             'data' => $link
