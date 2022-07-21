@@ -22,4 +22,29 @@ app.component('snippet-table', SnippetTable)
 app.component('link-form', LinkForm)
 app.component('link-table', LinkTable)
 
+app.config.globalProperties.$applyValidation = (errors, keys) => {
+    for (let error in errors) {
+        const el = document.getElementById(error)
+        el.classList.add('border-red-300')
+
+        let errorText = document.createElement('p')
+        errorText.classList = 'mt-2 text-sm text-red-600'
+        errorText.textContent = errors[error][0]
+
+        el.parentNode.appendChild(errorText)
+    }
+}
+
+app.config.globalProperties.$resetValidation = (keys) => {
+    keys.forEach(key => {
+        const input = document.getElementById(key)
+        input.classList.remove('border-red-300')
+
+        const validationMessage = document.getElementById(`${key}-error`)
+        if (validationMessage) {
+            validationMessage.remove()
+        }
+    })
+}
+
 app.mount('#app')
