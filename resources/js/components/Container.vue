@@ -6,7 +6,7 @@
     <div
         v-if="nav === 'pdfs'">
       <pdf-form class="mb-12"
-                v-show="true"
+                v-show="showForm"
                 @close="showForm = false"
                 :editItem="editItem">
       </pdf-form>
