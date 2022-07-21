@@ -12,8 +12,8 @@ class CreatePdfController extends Controller
     public function __invoke(CreatePdfRequest $request)
     {
         $pdf = Pdf::create([
-            'title' => request()->get('title'),
-            'path' => request()->file('pdf')->store('/pdfs/' . Str::random(6)),
+            'title' => $request->get('title'),
+            'path' => $request->file('pdf')->store('/pdfs/' . Str::random(6)),
         ]);
 
         return response()->json([
