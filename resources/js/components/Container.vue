@@ -16,6 +16,20 @@
                        @showForm="showForm = true; editItem = null"
                        @delete=""></pdf-table>
         </div>
+
+        <div
+            v-else-if="nav === 'snippets'">
+            <snippet-form class="mb-12"
+                      v-show="true"
+                      @close="showForm = false"
+                      :editItem="editItem">
+            </snippet-form>
+
+            <snippet-table :items="items"
+                       @edit="edit"
+                       @showForm="showForm = true; editItem = null"
+                       @delete=""></snippet-table>
+        </div>
     </div>
 </template>
 
@@ -32,7 +46,7 @@ export default {
         return {
             editItem: null,
             showForm: false,
-            nav: 'pdfs',
+            nav: 'snippets',
         }
     },
 
