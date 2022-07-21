@@ -43,17 +43,15 @@
 
                         <div class="mt-1 sm:mt-0 sm:col-span-2">
                             <div class="relative flex items-start">
-                                <div class="flex items-center h-5">
+                                <label class="flex items-center h-5">
                                     <input type="checkbox"
                                            class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
                                            v-model="form.open_in_new_tab">
-                                </div>
 
-                                <div class="ml-3 text-sm">
-                                    <label for="comments" class="font-medium text-gray-700">
-                                        Open in new tab
-                                    </label>
-                                </div>
+                                    <span class="ml-3 font-medium text-gray-700 select-none">
+                                      Open in new tab
+                                    </span>
+                                </label>
                             </div>
                         </div>
                     </div>
