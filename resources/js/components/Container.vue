@@ -20,7 +20,7 @@
         <div
             v-else-if="nav === 'snippets'">
             <snippet-form class="mb-12"
-                      v-show="true"
+                      v-show="showForm"
                       @close="showForm = false"
                       :editItem="editItem">
             </snippet-form>
@@ -34,7 +34,7 @@
         <div
             v-else-if="nav === 'links'">
             <link-form class="mb-12"
-                          v-show="true"
+                          v-show="showForm"
                           @close="showForm = false"
                           :editItem="editItem">
             </link-form>
