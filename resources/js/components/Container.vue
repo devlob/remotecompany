@@ -30,6 +30,20 @@
                        @showForm="showForm = true; editItem = null"
                        @delete=""></snippet-table>
         </div>
+
+        <div
+            v-else-if="nav === 'links'">
+            <link-form class="mb-12"
+                          v-show="true"
+                          @close="showForm = false"
+                          :editItem="editItem">
+            </link-form>
+
+            <link-table :items="items"
+                           @edit="edit"
+                           @showForm="showForm = true; editItem = null"
+                           @delete=""></link-table>
+        </div>
     </div>
 </template>
 
@@ -46,7 +60,7 @@ export default {
         return {
             editItem: null,
             showForm: false,
-            nav: 'snippets',
+            nav: 'links',
         }
     },
 

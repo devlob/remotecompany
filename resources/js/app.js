@@ -6,6 +6,8 @@ import PdfForm from './components/pdfs/Form.vue'
 import PdfTable from './components/pdfs/Table.vue'
 import SnippetForm from './components/snippets/Form.vue'
 import SnippetTable from './components/snippets/Table.vue'
+import LinkForm from './components/links/Form.vue'
+import LinkTable from './components/links/Table.vue'
 
 const app = createApp({})
 app.component('resource-navigation', ResourceNavigation)
@@ -16,5 +18,8 @@ app.component('pdf-table', PdfTable)
 
 app.component('snippet-form', SnippetForm)
 app.component('snippet-table', SnippetTable)
+
+app.component('link-form', LinkForm)
+app.component('link-table', LinkTable)
 
 app.mount('#app')
