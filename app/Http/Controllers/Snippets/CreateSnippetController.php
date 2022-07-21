@@ -3,18 +3,14 @@
 namespace App\Http\Controllers\Snippets;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Snippets\CreateSnippetRequest;
 use App\Models\Snippet;
-use Illuminate\Http\Request;
 
 class CreateSnippetController extends Controller
 {
-    public function __invoke(Request $request)
+    public function __invoke(CreateSnippetRequest $request)
     {
-        $snippet = Snippet::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'html' => $request->html,
-        ]);
+        $snippet = Snippet::create($request->validated());
 
         return response()->json([
             'data' => $snippet

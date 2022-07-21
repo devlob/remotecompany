@@ -3,18 +3,14 @@
 namespace App\Http\Controllers\Snippets;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Snippets\EditSnippetRequest;
 use App\Models\Snippet;
-use Illuminate\Http\Request;
 
 class EditSnippetController extends Controller
 {
-    public function __invoke(Snippet $snippet, Request $request)
+    public function __invoke(EditSnippetRequest $request, Snippet $snippet)
     {
-        $snippet->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'html' => $request->html,
-        ]);
+        $snippet->update($request->validated());
 
         return response()->json([
             'data' => $snippet
