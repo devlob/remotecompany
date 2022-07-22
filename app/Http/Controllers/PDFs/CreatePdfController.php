@@ -13,7 +13,7 @@ class CreatePdfController extends Controller
     {
         $pdf = Pdf::create([
             'title' => $request->get('title'),
-            'path' => $request->file('pdf')->store('/pdfs/' . Str::random(6)),
+            'path' => $request->file('pdf')->store('/pdfs/' . Str::random(6), 'public'),
         ]);
 
         return response()->json([
