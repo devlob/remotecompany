@@ -7,16 +7,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home', [
-        'pdfs' => Pdf::all(),
-        'snippets' => Snippet::all(),
-        'links' => Link::all(),
+        'pdfs' => Pdf::latest()->get(),
+        'snippets' => Snippet::latest()->get(),
+        'links' => Link::latest()->get(),
     ]);
 });
 
 Route::get('/admin', function () {
     return view('admin', [
-        'pdfs' => Pdf::all(),
-        'snippets' => Snippet::all(),
-        'links' => Link::all(),
+        'pdfs' => Pdf::latest()->get(),
+        'snippets' => Snippet::latest()->get(),
+        'links' => Link::latest()->get(),
     ]);
 });
