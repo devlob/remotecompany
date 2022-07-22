@@ -7,20 +7,26 @@
                         @click="makeCurrentNav('pdfs')">
                         PDFs
 
-                        <span class="bg-indigo-100 text-indigo-600 hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block">4</span>
+                        <span class="bg-indigo-100 text-indigo-600 hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block">
+                          {{ totalPdfs }}
+                        </span>
                     </span>
 
                     <span id="snippets" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200 whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm cursor-pointer"
                        @click="makeCurrentNav('snippets')">
                         Snippets
-                        <span class="bg-gray-100 text-gray-900 hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block">52</span>
+                        <span class="bg-gray-100 text-gray-900 hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block">
+                          {{ totalSnippets }}
+                        </span>
                     </span>
 
                     <span id="links" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200 whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm cursor-pointer"
                       @click="makeCurrentNav('links')">
                         Links
 
-                        <span class="bg-gray-100 text-gray-900 hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block">6</span>
+                        <span class="bg-gray-100 text-gray-900 hidden ml-3 py-0.5 px-2.5 rounded-full text-xs font-medium md:inline-block">
+                          {{ totalLinks }}
+                        </span>
                     </span>
                 </nav>
             </div>
@@ -30,6 +36,23 @@
 
 <script>
 export default {
+  props: {
+    totalPdfs: {
+      type: Number,
+      required: true,
+    },
+
+    totalSnippets: {
+      type: Number,
+      required: true,
+    },
+
+    totalLinks: {
+      type: Number,
+      required: true,
+    },
+  },
+
   data() {
     return {
       currentNav: 'pdfs',

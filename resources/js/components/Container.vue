@@ -1,6 +1,9 @@
 <template>
   <div>
     <resource-navigation class="mb-12"
+                         :totalPdfs="pdfs.length"
+                         :totalSnippets="snippets.length"
+                         :totalLinks="links.length"
                          @changeNav="changeNav"></resource-navigation>
 
     <div
@@ -13,8 +16,7 @@
 
       <pdf-table :items="pdfs"
                  @edit="edit"
-                 @showForm="showForm = true; editItem = null"
-                 @delete=""></pdf-table>
+                 @showForm="showForm = true; editItem = null"></pdf-table>
     </div>
 
     <div
@@ -27,8 +29,7 @@
 
       <snippet-table :items="snippets"
                      @edit="edit"
-                     @showForm="showForm = true; editItem = null"
-                     @delete=""></snippet-table>
+                     @showForm="showForm = true; editItem = null"></snippet-table>
     </div>
 
     <div
@@ -41,8 +42,7 @@
 
       <link-table :items="links"
                   @edit="edit"
-                  @showForm="showForm = true; editItem = null"
-                  @delete=""></link-table>
+                  @showForm="showForm = true; editItem = null"></link-table>
     </div>
   </div>
 </template>
